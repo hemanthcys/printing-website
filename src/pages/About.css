@@ -1,0 +1,216 @@
+.about-page {
+  min-height: 100vh;
+}
+
+.about-hero {
+  background: #1a2e4a;
+  color: white;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.about-eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #8aa8c4;
+  margin-bottom: 14px;
+}
+
+.about-hero h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.about-hero p {
+  font-size: 1rem;
+  opacity: 0.72;
+}
+
+/* Intro */
+.about-intro {
+  padding: 90px 0;
+  background: white;
+}
+
+.about-intro-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 72px;
+  align-items: start;
+}
+
+.about-text h2 {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #1a2e4a;
+  margin-bottom: 22px;
+  letter-spacing: -0.3px;
+}
+
+.about-text p {
+  color: #666;
+  line-height: 1.85;
+  margin-bottom: 18px;
+  font-size: 15px;
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.about-stat {
+  background: #f5f5f3;
+  padding: 28px 20px;
+  text-align: center;
+  border-top: 3px solid #1a2e4a;
+}
+
+.about-stat h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a2e4a;
+  margin-bottom: 6px;
+  letter-spacing: -0.5px;
+}
+
+.about-stat p {
+  color: #888;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+/* Milestones */
+.milestones {
+  padding: 80px 0;
+  background: #f5f5f3;
+}
+
+.milestones-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.milestone-item {
+  display: grid;
+  grid-template-columns: 80px 40px 1fr;
+  align-items: center;
+  gap: 0;
+  padding: 28px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.milestone-year {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a2e4a;
+  letter-spacing: 0.5px;
+}
+
+.milestone-bar {
+  width: 2px;
+  height: 100%;
+  background: #1a2e4a;
+  margin: 0 auto;
+  min-height: 24px;
+  opacity: 0.25;
+}
+
+.milestone-text {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+  padding-left: 24px;
+}
+
+/* Values */
+.values {
+  padding: 80px 0;
+  background: white;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.value-card {
+  padding: 36px 24px;
+  border: 1px solid #e8e8e8;
+  border-top: 3px solid #1a2e4a;
+  transition: box-shadow 0.25s;
+}
+
+.value-card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+}
+
+.value-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a2e4a;
+  margin-bottom: 12px;
+}
+
+.value-card p {
+  color: #777;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+/* About CTA */
+.about-cta {
+  padding: 80px 0;
+  text-align: center;
+  background: #f5f5f3;
+  border-top: 1px solid #e8e8e8;
+}
+
+.cta-content h2 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #1a2e4a;
+  margin-bottom: 14px;
+  letter-spacing: -0.3px;
+}
+
+.cta-content p {
+  font-size: 1rem;
+  color: #777;
+  margin-bottom: 36px;
+  line-height: 1.6;
+}
+
+@media (max-width: 1024px) {
+  .about-intro-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .milestone-item {
+    grid-template-columns: 60px 24px 1fr;
+  }
+
+  .about-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+}
