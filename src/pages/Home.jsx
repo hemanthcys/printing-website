@@ -102,9 +102,6 @@ function Home() {
     return () => clearInterval(timer);
   }, []);
 
-  const prev = () => setCurrent((c) => (c - 1 + slides.length) % slides.length);
-  const next = () => setCurrent((c) => (c + 1) % slides.length);
-
   const slide = slides[current];
 
   return (
@@ -123,7 +120,6 @@ function Home() {
         </div>
 
         <div className="carousel-controls">
-          <button className="carousel-arrow" onClick={prev} aria-label="Previous">&#8592;</button>
           <div className="carousel-dots">
             {slides.map((_, i) => (
               <button
@@ -134,7 +130,6 @@ function Home() {
               />
             ))}
           </div>
-          <button className="carousel-arrow" onClick={next} aria-label="Next">&#8594;</button>
         </div>
       </section>
 
