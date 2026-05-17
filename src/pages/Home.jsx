@@ -1,6 +1,33 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
+
+const slides = [
+  {
+    eyebrow: "Hyderabad's Premier Printing House",
+    heading: <>We cover the entire gamut<br />of print needs</>,
+    sub: 'Delivering premium books, packaging, labels, and marketing materials across India and worldwide — with craft, precision, and care.',
+    primary: { label: 'View Showcase', to: '/products' },
+    secondary: { label: 'Find Our Office', to: '/contact' },
+    bg: '#1a2e4a',
+  },
+  {
+    eyebrow: 'Packaging & Cartons',
+    heading: <>Packaging that protects,<br />presents, and sells</>,
+    sub: 'Custom rigid boxes, folding cartons, and specialty packaging crafted for luxury retail, FMCG, and premium consumer brands.',
+    primary: { label: 'Explore Packaging', to: '/products' },
+    secondary: { label: 'Request a Quote', to: '/contact' },
+    bg: '#1e3650',
+  },
+  {
+    eyebrow: 'Award-Winning Quality',
+    heading: <>15+ years of print<br />excellence across India</>,
+    sub: 'ISO-certified processes, G7-calibrated colour management, and a dedicated team — ensuring every job meets the highest standard.',
+    primary: { label: 'About Us', to: '/about' },
+    secondary: { label: 'Get in Touch', to: '/contact' },
+    bg: '#162840',
+  },
+];
 
 const categories = [
   {
@@ -64,25 +91,50 @@ const testimonials = [
 
 function Home() {
   const [openFeature, setOpenFeature] = useState(0);
+  const [current, setCurrent] = useState(0);
 
   const toggle = (i) => setOpenFeature(openFeature === i ? -1 : i);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % slides.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, []);
+
+  const prev = () => setCurrent((c) => (c - 1 + slides.length) % slides.length);
+  const next = () => setCurrent((c) => (c + 1) % slides.length);
+
+  const slide = slides[current];
 
   return (
     <div className="home">
 
-      {/* Hero */}
-      <section className="hero">
+      {/* Hero Carousel */}
+      <section className="hero" style={{ background: slide.bg }}>
         <div className="container hero-content">
-          <p className="hero-eyebrow">Hyderabad's Premier Printing House</p>
-          <h1>We cover the entire gamut<br />of print needs</h1>
-          <p className="hero-sub">
-            Delivering premium books, packaging, labels, and marketing materials
-            across India and worldwide — with craft, precision, and care.
-          </p>
+          <p className="hero-eyebrow">{slide.eyebrow}</p>
+          <h1>{slide.heading}</h1>
+          <p className="hero-sub">{slide.sub}</p>
           <div className="hero-buttons">
-            <Link to="/products" className="btn btn-primary">View Showcase</Link>
-            <Link to="/contact" className="btn btn-outline-light">Find Our Office</Link>
+            <Link to={slide.primary.to} className="btn btn-primary">{slide.primary.label}</Link>
+            <Link to={slide.secondary.to} className="btn btn-outline-light">{slide.secondary.label}</Link>
           </div>
+        </div>
+
+        <div className="carousel-controls">
+          <button className="carousel-arrow" onClick={prev} aria-label="Previous">&#8592;</button>
+          <div className="carousel-dots">
+            {slides.map((_, i) => (
+              <button
+                key={i}
+                className={`carousel-dot ${i === current ? 'active' : ''}`}
+                onClick={() => setCurrent(i)}
+                aria-label={`Slide ${i + 1}`}
+              />
+            ))}
+          </div>
+          <button className="carousel-arrow" onClick={next} aria-label="Next">&#8594;</button>
         </div>
       </section>
 
